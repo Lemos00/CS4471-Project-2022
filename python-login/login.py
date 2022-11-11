@@ -1,7 +1,6 @@
 import json
 import pickle
-from dataclasses import dataclass, field
-from typing import Any, Optional, Tuple
+from typing import Any
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256
 
@@ -15,7 +14,6 @@ class LoginServer:
             # self.users = {k: bytes.fromhex(v) for k, v in json.load(file).items()}
         with open("./Users.json", "rb") as file:
                 self.users = json.load(file)
-        print("hello world")
 
 
     def derive_secret_key(self, username: str, password: str) -> bytes:
@@ -43,6 +41,7 @@ class LoginServer:
         # returning all as bytes
         return nonce + ciphertext + tag
 
+
     def decrypt(self, key: str, data: bytes) -> Any:
         """Decrypts the given message using AES."""
         try:
@@ -62,6 +61,7 @@ class LoginServer:
         except Exception as e:
             raise Exception(f"Failed to decrypt: {e}")
 
+
     def encryptPassword(self, username: str, password: str) -> bytes:
         """
             Function related to encrypting the given password, as a means to isolate encrypt, decrypt and key generation
@@ -71,6 +71,7 @@ class LoginServer:
         encryptedPassword = self.encrypt(secretKey, password)
 
         return encryptedPassword
+
 
     def decryptPassword(self, key: bytes, password: bytes) -> str:
         """
@@ -82,7 +83,9 @@ class LoginServer:
             return result
         except Exception as e:
             print(e)
-    
+            return None
+
+
     def findUser(self, username: str) -> bool:
         """
             Verifies if a given username is in the database or not.
@@ -92,6 +95,7 @@ class LoginServer:
         for user in self.users["commonUsers"]:
             if user["username"] == username:
                 found = True
+                break
         
         return found
 
@@ -104,23 +108,22 @@ class LoginServer:
         for user in range(len(self.users["commonUsers"])):
             if self.users["commonUsers"][user]["username"] == username:
                 found = user
+                break
         
         return found
 
-    def createNewUser(self, username: str, password: str) -> bool:
+
+    def createNewUser(self, username: str, password: str, admin: bool = False) -> bool:
         """
             Registers new user into the Database in case it does not exist
             Returns: TRUE if it could register new user, FALSE otherwise
         """
         try:
             if not self.findUser(username):
-                newUser = {"username": username,"password": self.encryptPassword(username, password).hex()}
+                newUser = {"username": username,"password": self.encryptPassword(username, password).hex(),"admin": admin}
                 self.users["commonUsers"].append(newUser)
 
-                with open("./Users.json", "w") as file:
-                    json.dump(self.users, file, indent=4)
-
-                file.close()
+                self.writeUsers()
             else:
                 print("user already registered")
             
@@ -129,7 +132,12 @@ class LoginServer:
             print(f"[error] unable to create new user: {e}")
             return False
 
+
     def changePassword(self, username: str, newPassword: str) -> bool:
+        """
+            Method is responsible for changing existing User's password
+            Returns: TRUE if successful, FALSE otherwise
+        """
         try:
             if self.findUser(username):
                 newPass = self.encryptPassword(username, newPassword).hex()
@@ -137,18 +145,48 @@ class LoginServer:
                 del self.users["commonUsers"][userIndex]["password"]
                 self.users["commonUsers"][userIndex]["password"] = newPass
 
-            with open("./Users.json", "w") as file:
-                json.dump(self.users, file, indent=4)
+            self.writeUsers()
             
             return True
         except Exception as e:
             print(f"Error on changing password - {e}")
             return False
+    
+    def writeUsers(self):
+        """
+            Writes current users set to JSON file
+        """
+        with open("./Users.json", "w") as file:
+            json.dump(self.users, file, indent=4)
+        
+        file.close()
+    
+    def loginUser(self, username: str, password: str) -> bool:
+        """
+            Login user with the given credentials
+            Returns: TRUE if login successful, FALSE otherwise
+        """
+        try:
+            if self.findUser(username):
+                indexOfUser = self.findIndex(username)
+                gottenPassword = self.users["commonUsers"][indexOfUser]["password"]
+                truePassword = self.decryptPassword(self.derive_secret_key(username, password), bytes.fromhex(gottenPassword))
+                if password == truePassword:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        except Exception as e:
+            print(e)
+            return False
+
+
 
 if __name__ == "__main__":
     #test 1
     test = LoginServer()
-    test.createNewUser("Gabriel", "123123")
+    test.createNewUser("user1", "test123")
     encryptionTest = test.encrypt(test.derive_secret_key("user1", "test123"), b"e7e2456a808ebfec10d56443ab85a5cbf22701c02a98d875081d130cd38e495a")
     print(test.decrypt(test.derive_secret_key("user1", "test123"), encryptionTest).decode())
 
@@ -161,3 +199,5 @@ if __name__ == "__main__":
     test.changePassword("Gabriel Lemos", "123123")
     gottenPassword = test.users["commonUsers"][test.findIndex("Gabriel Lemos")]["password"]
     print(test.decryptPassword(test.derive_secret_key("Gabriel Lemos", "123123"), bytes.fromhex(gottenPassword)))
+
+    print(test.loginUser("Gabriel Lemos", "123123"))

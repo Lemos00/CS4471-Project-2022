@@ -2,27 +2,23 @@
     "commonUsers": [
         {
             "username": "user1",
-            "password": "0a8598c19841b1592b5691d9c135b06bbcb402e5122127ccf4d786f12ffd8b63"
-        },
-        {
-            "username": "user2",
-            "password": "31f6e1a61f42bbbdf5a136e150a6a72d6a5185eb4d84384bfd64868ec1f0d970"
-        },
-        {
-            "username": "user3",
-            "password": "2c366ba0ace3acc0e0b8b460f4bfac9dee587477978f53d8bfc2bc4c3d77ef5a"
-        },
-        {
-            "username": "userTesting",
-            "password": "3ceea2169c05788ac884aa7c8f8d3b764197b9e5e9ac6e3ca7ad4c295e3f9458e176def91baf975d4cb2e1c49b5c76b09da2cde6ce"
+            "password": "0a8598c19841b1592b5691d9c135b06bbcb402e5122127ccf4d786f12ffd8b63",
+            "admin": false
         },
         {
             "username": "Gabriel",
-            "password": "1247f42c594624128108ffa047d8fa261f7869e31965716328225aa4fd656114293b380051a007ac82abcab0335b1559a564078104"
+            "password": "1247f42c594624128108ffa047d8fa261f7869e31965716328225aa4fd656114293b380051a007ac82abcab0335b1559a564078104",
+            "admin": false
         },
         {
             "username": "Gabriel Lemos",
-            "password": "c49da438a92e43744b052bed77d909727acd853998cdfb7ea1bca7948d54266cb8420943f800c08b6490b7d791e085a465b375d18e"
+            "admin": false,
+            "password": "8b45e0fec84e435c2458de663fa85be5db8fcdea44ce0694fbc395cccaca1a218dda1ddd0afda31b99c3c87af81139b2232a58b5df"
+        },
+        {
+            "username": "userTesting",
+            "password": "226101bf72cc93a9d1b0703cc338e2b3d56adf7df08fdb54224ee26d0077c8aa5230866151ec15124ff23c6f36ade7d4588830abac",
+            "admin": false
         }
     ]
 }
