@@ -2,5 +2,5 @@
 
 Libraries utilized:
    
-- pycryptodome (for encryption of passwords)
-- pytest (for unit tests)
+- pycryptodome (for encryption of passwords) [pip install pycryptodome]
+- pytest (for unit tests) [pip install pytest]
