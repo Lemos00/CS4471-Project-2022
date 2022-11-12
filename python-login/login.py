@@ -99,7 +99,7 @@ class LoginServer:
         
         return found
 
-    def findIndex(self, username: str) -> bool:
+    def findIndex(self, username: str) -> int:
         """
             Gets Index of given user in the database.
             Returns: index if username is in database, None other
@@ -124,10 +124,9 @@ class LoginServer:
                 self.users["commonUsers"].append(newUser)
 
                 self.writeUsers()
+                return True
             else:
-                print("user already registered")
-            
-            return True
+                raise Exception("user already registered")
         except Exception as e:
             print(f"[error] unable to create new user: {e}")
             return False
@@ -145,9 +144,11 @@ class LoginServer:
                 del self.users["commonUsers"][userIndex]["password"]
                 self.users["commonUsers"][userIndex]["password"] = newPass
 
-            self.writeUsers()
+                self.writeUsers()
             
-            return True
+                return True
+            else:
+                raise Exception("user not registered")
         except Exception as e:
             print(f"Error on changing password - {e}")
             return False
