@@ -22,7 +22,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import movie
+    import movie
     app.register_blueprint(movie.movie_blueprint)
 
     @app.route('/hello')
