@@ -7,21 +7,12 @@ const LoginPage = () => {
 
     const [showRegister, setShowRegister] = React.useState(false);
 
-    const handleShow = () => {
-        setShowRegister(showRegister => !showRegister);
-    }
-    let toggleLoginCheck = showRegister ? "null" : "";
-
 
     return ( 
         <div className="loginCover">
             
-            <LoginComponent setShow={setShowRegister}/>
-            {/* User Component -> Renders on click
-            {
-                showRegister ? <RegisterUser /> : null
-            } */}
-            <RegisterUser setShow={setShowRegister}/>
+            {showRegister ? <RegisterUser setShowRegister={setShowRegister}/> 
+                : <LoginComponent setShowRegister={setShowRegister}/>};
         
         </div>
      );
