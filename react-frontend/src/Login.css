@@ -11,7 +11,23 @@
     align-items: center;
 }
 
-.loginCover {
+/* .loginCover {
+    background-color: white;
+    width: 25em;
+    height: 30em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12.5em;
+    margin-left: -15em;
+    border-radius: 1em;
+    box-shadow: 0 0.188em 1.550em rgb(156,156,156);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+} */
+.loginPage {
     background-color: white;
     width: 25em;
     height: 30em;
@@ -28,6 +44,10 @@
     justify-content: space-around;
 }
 
+.loginPagenull {
+    display: none;
+}
+
 .alt-login {
     width: 80%;
     height: 3em;
@@ -39,6 +59,7 @@
     width: 50%;
     height: 90%;
     border-radius: 0.25em;
+    margin-left: 5%;
     background-color: black;
     background-position: center;
     background-size: contain;
@@ -76,6 +97,10 @@ input:focus {
 }
 
 #forgot {
+    color: white;
+}
+
+#register {
     color: white;
 }
 
