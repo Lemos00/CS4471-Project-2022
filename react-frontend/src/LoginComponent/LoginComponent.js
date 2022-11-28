@@ -3,7 +3,7 @@ import React from "react"
 import "../RegisterUserComponent/RegisterUser"
 import RegisterUser from "../RegisterUserComponent/RegisterUser";
 
-const LoginComponent = () => {
+const LoginComponent = ({setShowRegister}) => {
 
     const [showRegister, setShow] = React.useState(false);
 
@@ -27,12 +27,6 @@ const LoginComponent = () => {
                     <div className="login-btn" id="register" onClick= {() => {handleShow();}}>Register New User</div>
                 </div>
             </div>
-
-            {/* User Component */}
-            {
-                showRegister ? <RegisterUser /> : null
-            }
-        
         </div>
      );
 }
