@@ -1,5 +1,7 @@
 import "./Login.css"
 import React from "react"
+import "../RegisterUserComponent/RegisterUser"
+import RegisterUser from "../RegisterUserComponent/RegisterUser";
 
 const LoginComponent = () => {
 
@@ -8,8 +10,9 @@ const LoginComponent = () => {
     const handleShow = () => {
         setShow(showRegister => !showRegister);
     }
-
     let toggleLoginCheck = showRegister ? "null" : "";
+
+
     return ( 
         <div className="loginCover">
             <div className={`loginPage${toggleLoginCheck}`}>
@@ -24,9 +27,11 @@ const LoginComponent = () => {
                     <div className="login-btn" id="register" onClick= {() => {handleShow();}}>Register New User</div>
                 </div>
             </div>
-            <div className="registerNewUser">
-                <h1>Hello there, this is register</h1>
-            </div>
+
+            {/* User Component */}
+            {
+                showRegister ? <RegisterUser /> : null
+            }
         
         </div>
      );

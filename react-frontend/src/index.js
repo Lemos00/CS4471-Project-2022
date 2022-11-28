@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import LoginComponent from './LoginComponent';
+import LoginComponent from './LoginComponent/LoginComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
