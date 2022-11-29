@@ -13,8 +13,8 @@ const LoginComponent = ({setShowRegister}) => {
             <form action="" method="post">
             <div className="loginPage">
                 <h1>Book-A-Movie</h1>
-                <input type="text" placeholder="username" />
-                <input type="password" placeholder="password" />
+                <input className="loginInput" type="text" placeholder="username" />
+                <input className="loginInput" type="password" placeholder="password" />
                 
                 <p className="text">Or login using</p>
                 <div className="login-btn">Login</div>

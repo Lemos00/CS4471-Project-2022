@@ -1,8 +1,10 @@
 import React from "react"
+import FormInput from "../FormInput/FormInput"
+import "./RegisterUser.css"
 
 const RegisterUser = ({setShowRegister}) => {
     // make input states
-    const [email, setEmail] = React.useState("");
+    const [username, setUsername] = React.useState("");
     const [pass, setPass] = React.useState("");
 
     const handleShow = (state) => {
@@ -11,10 +13,10 @@ const RegisterUser = ({setShowRegister}) => {
     return ( 
         <div className="registerCover">
             <form action="" method="post">
-                <h1 className="mainHeader">Hello from register</h1>
-                <label for="email" className="usernameLabel">email</label>
-                <input type="email" className="usernameInput" placeholder="myexample@example.com" />
-                <button onClick={()=>{handleShow(false)}}>register</button>
+                <h1 className="mainHeader">Resgiter New User</h1>
+                <FormInput placeholder="Username" setUsername={setUsername}/>
+                <FormInput placeholder="New Password"/>
+                <FormInput placeholder="Re-type new Password"/>
             </form>
         </div>
      );
