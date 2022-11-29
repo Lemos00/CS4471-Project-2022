@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    box-sizing: 0;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPage {
+    width: 25em;
+    height: 30em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12.5em;
+    margin-left: -15em;
+    border-radius: 1em;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.loginPagenull {
+    display: none;
+}
+
+.alt-login {
+    width: 80%;
+    height: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.alt-login div {
+    width: 50%;
+    height: 90%;
+    border-radius: 0.25em;
+    margin-left: 5%;
+    background-color: black;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.loginInput {
+    border: none;
+    background-color: rgb(229, 226, 226);
+    height: 2em;
+    width: 60%;
+    border-radius: 0.25em;
+    text-align: center;
+    padding: 2em;
+}
+
+.loginInput:focus {
+    outline-color: rgb(32, 177, 255);
+}
+
+.login-btn {
+    width: 50%;
+    height: 3em;
+    background-color: rgb(32, 177, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+.login-btn:hover {
+    transform: scale(1.25);
+}
+
+#forgot {
+    color: white;
+}
+
+#register {
+    color: white;
+}
+
+.text {
+    position: relative;
+    bottom: -1em;
+}
+
+.hide {
+    display: none;
+}
