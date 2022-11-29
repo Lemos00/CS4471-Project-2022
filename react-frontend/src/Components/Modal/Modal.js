@@ -2,6 +2,10 @@ import React from 'react'
 import "./Modal.css"
 
 const Modal = props => {
+    if (!props.show){
+        return null
+    }
+
     return(
         <div className="modal">
             <div className="modal-content">
@@ -15,8 +19,8 @@ const Modal = props => {
                     Seat Chart/Num tickets
                 </div>
                 <div className="modal-footer">
-                    <button className="button1">Pay</button>
-                    <button className="button2">Close</button>
+                    <button onClick={props.onPay} className="button1">Pay</button>
+                    <button onClick={props.onClose} className="button2">Close</button>
                 </div>
             </div>
         </div>
