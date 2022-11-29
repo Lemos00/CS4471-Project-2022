@@ -1,14 +1,15 @@
 from flask import Blueprint, request, jsonify
 
-from api.db import MovieDatabase
+# from api.db import MovieDatabase
+from db import Database
 
 movie_blueprint = Blueprint('movie', __name__, url_prefix='/movie')
-movie_db = MovieDatabase()
+db = Database()
 
 # GET /movie/<movie_id>
 @movie_blueprint.route('/<movie_id>', methods=['GET'])
 def get_movie(movie_id: str):
-    data = movie_db.get_movie(movie_id)
+    data = db.get_movie(movie_id)
 
     # If the movie doesn't exist, return a 404
     if data is None:
@@ -27,7 +28,7 @@ def add_movie():
     data = request.get_json()
 
     # add the movie to the database
-    result = movie_db.add_movie(data['movie_id'], data['title'])
+    result = db.add_movie(data['movie_id'], data['title'])
 
     # If the movie already exists, return a 409
     if not result:
