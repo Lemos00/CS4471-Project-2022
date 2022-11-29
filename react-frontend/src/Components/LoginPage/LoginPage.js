@@ -1,9 +1,9 @@
 import React from "react";
-// import "../RegisterUserComponent/RegisterUser";
 import RegisterUser from "../RegisterUserComponent/RegisterUser";
 import LoginComponent from "../LoginComponent/LoginComponent";
 import "./LoginPage.css"
 
+// MAIN COMPONENT, LOGIN PAGE MAIN
 const LoginPage = () => {
 
     const [showRegister, setShowRegister] = React.useState(false);
