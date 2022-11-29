@@ -1,7 +1,7 @@
 import React from "react";
 import "./FormInput.css";
 
-
+// COMPONENT UTILIZED IN THE REGISTER USER FORM
 const FormInput = (props) => {
     // take things gotten from props
     const { label, errorMessage, onChange, id, ...inputProps } = props;
