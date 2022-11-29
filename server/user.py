@@ -60,7 +60,6 @@ def login_user():
 
     priv_key = user['priv_key']
     decrypted_password = login_server.decrypt(priv_key, bytes.fromhex(user['hash_password']))
-    given_password = db.get_user(data['username'])['hash_password']
 
     if decrypted_password == data['password']:
         return jsonify({
@@ -72,3 +71,25 @@ def login_user():
             'status': False,
             'message': 'Login failed',
         }), 401
+
+# POST /user/receipt
+@user_blueprint.route('/receipt', methods=['POST'])
+def add_receipt():
+    # Get the receipt data from the request
+    data = request.get_json()
+
+    # add the receipt to the database
+    result = db.add_receipt(data['ticket_id'], data['user_id'], data['total_tickets'])
+
+    # If the receipt already exists, return a 409
+    if not result:
+        return jsonify({
+            'status': False,
+            'message': 'Receipt already exists',
+        }), 409
+    
+    # Return a success message
+    return jsonify({
+        'status': True,
+        'message': 'Receipt added',
+    }), 201

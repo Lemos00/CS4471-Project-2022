@@ -36,6 +36,16 @@ class Database:
                 FOREIGN KEY (user_id) REFERENCES user(user_id)
             )
         ''')
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS receipt (
+                receipt_id INTEGER PRIMARY KEY,
+                ticket_id TEXT,
+                user_id TEXT,
+                total_tickets INTEGER,
+                issue_date DATE,
+                FOREIGN KEY (user_id) REFERENCES user(user_id)
+            )
+        ''')
         self.connection.commit()
 
     def add_movie(self, title: str, image_url: str, release_date: str, age_rating: str) -> bool:
@@ -92,6 +102,17 @@ class Database:
             'release_date': data[3],
             'age_rating': data[4],
         }
+    
+    def add_receipt(self, ticket_id: str, user_id: str, total_tickets: int) -> bool:
+        try:
+            self.cursor.execute('''
+                INSERT INTO receipt (ticket_id, user_id, total_tickets)
+                VALUES (?, ?, ?)
+            ''', (ticket_id, user_id, total_tickets))
+            self.connection.commit()
+            return True
+        except sqlite3.Error:
+            return False
 
 db = Database()
 # db.add_movie('The Matrix', 'https://www.imdb.com/title/tt0133093/mediaviewer/rm2050061312/', '1999-03-31', '15')
