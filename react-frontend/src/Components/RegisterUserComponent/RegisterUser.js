@@ -76,6 +76,7 @@ const RegisterUser = ({setShowRegister}) => {
                 })}
                 <button className="registerSubmitButton">Submit</button>
             </form>
+            <button className="goBackButton" onClick={() => {handleShow(false);}}>Home Page</button>
         </div>
      );
 }

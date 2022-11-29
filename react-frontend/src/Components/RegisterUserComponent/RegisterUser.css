@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    flex-direction: column;
 }
 
 .registerForm {
@@ -31,4 +32,27 @@
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 30px;
+    transition: 0.5s;
+}
+
+.goBackButton {
+    width: 20%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    transition: 0.5s;
+}
+
+.goBackButton:hover {
+    transform: scale(1.25);
+}
+.registerSubmitButton:hover {
+    transform: scale(1.25);
 }
