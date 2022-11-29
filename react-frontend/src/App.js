@@ -1,17 +1,23 @@
-import React, {useState} from "react"
-import Modal from './Components/Modal/Modal'
-import payModal from './Components/payModal/payModal'
+import logo from './logo.svg';
+import './App.css';
 
-export default function App(){
-  const [show, setShow] = useState(false)
-
-  return(
+function App() {
+  return (
     <div className="App">
-      <h4>movie picture</h4>
-      <button onClick={() => setShow(true)}>Movie Name</button>
-      <Modal onClose={() => setShow(false)} show={show}/> 
-      <Modal onPay={() => setShow(false)} show={show}/> 
-      
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
