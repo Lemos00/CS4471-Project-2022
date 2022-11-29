@@ -10,8 +10,9 @@ const LoginComponent = ({setShowRegister}) => {
 
     return ( 
         <div className="loginCover">
+            <form action="" method="post">
             <div className="loginPage">
-                <h1>Movie Booking System</h1>
+                <h1>Book-A-Movie</h1>
                 <input type="text" placeholder="username" />
                 <input type="password" placeholder="password" />
                 
@@ -22,6 +23,7 @@ const LoginComponent = ({setShowRegister}) => {
                     <div className="login-btn" id="register" onClick= {() => {handleShow(true);}}>Register New User</div>
                 </div>
             </div>
+            </form>
         </div>
      );
 }
