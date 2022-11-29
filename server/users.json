@@ -1,0 +1,24 @@
+{
+    "commonUsers": [
+        {
+            "username": "user1",
+            "password": "0a8598c19841b1592b5691d9c135b06bbcb402e5122127ccf4d786f12ffd8b63",
+            "admin": false
+        },
+        {
+            "username": "Gabriel",
+            "password": "1247f42c594624128108ffa047d8fa261f7869e31965716328225aa4fd656114293b380051a007ac82abcab0335b1559a564078104",
+            "admin": false
+        },
+        {
+            "username": "Gabriel Lemos",
+            "admin": false,
+            "password": "8b45e0fec84e435c2458de663fa85be5db8fcdea44ce0694fbc395cccaca1a218dda1ddd0afda31b99c3c87af81139b2232a58b5df"
+        },
+        {
+            "username": "userTesting",
+            "password": "226101bf72cc93a9d1b0703cc338e2b3d56adf7df08fdb54224ee26d0077c8aa5230866151ec15124ff23c6f36ade7d4588830abac",
+            "admin": false
+        }
+    ]
+}

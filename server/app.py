@@ -22,8 +22,9 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    import movie
+    import movie, user
     app.register_blueprint(movie.movie_blueprint)
+    app.register_blueprint(user.user_blueprint)
 
     @app.route('/hello')
     def hello():

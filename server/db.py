@@ -18,7 +18,7 @@ class Database:
             CREATE TABLE IF NOT EXISTS user (
                 user_id INTEGER PRIMARY KEY,
                 username TEXT,
-                salt TEXT,
+                priv_key TEXT,
                 hash_password TEXT,
                 email TEXT,
                 first_name TEXT,
@@ -49,29 +49,29 @@ class Database:
         except sqlite3.Error:
             return False
     
-    def add_user(self, username: str, salt: str, hash_password: str,
+    def add_user(self, username: str, priv_key: str, hash_password: str,
         email: str, first_name: str, last_name: str) -> bool:
         try:
             self.cursor.execute('''
-                INSERT INTO user (username, salt, hash_password, email, first_name, last_name)
+                INSERT INTO user (username, priv_key, hash_password, email, first_name, last_name)
                 VALUES (?, ?, ?, ?, ?, ?)
-            ''', (username, salt, hash_password, email, first_name, last_name))
+            ''', (username, priv_key, hash_password, email, first_name, last_name))
             self.connection.commit()
             return True
         except sqlite3.Error:
             return False
     
-    def get_user(self, user_id: int) -> typing.Optional[dict]:
+    def get_user(self, username: str) -> typing.Optional[dict]:
         self.cursor.execute('''
-            SELECT * FROM user WHERE user_id = ?
-        ''', (user_id,))
+            SELECT * FROM user WHERE username = ?
+        ''', (username,))
         data = self.cursor.fetchone()
         if data is None:
             return None
         return {
             'user_id': data[0],
             'username': data[1],
-            'salt': data[2],
+            'priv_key': data[2],
             'hash_password': data[3],
             'email': data[4],
             'first_name': data[5],
@@ -95,4 +95,4 @@ class Database:
 
 db = Database()
 # db.add_movie('The Matrix', 'https://www.imdb.com/title/tt0133093/mediaviewer/rm2050061312/', '1999-03-31', '15')
-print(db.get_movie(1))
+# print(db.get_movie(1))
