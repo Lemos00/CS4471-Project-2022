@@ -3,9 +3,14 @@ import "./FormInput.css";
 
 
 const FormInput = (props) => {
+
+    // take things gotten from props
+    const { label, onChange, id, ...inputProps } = props;
+
     return (
         <div className="formInputs">
-            <input type="text" placeholder={props.placeholder} onChange={e => props.setUsername(e.target.value)}/>
+            <label>{label}</label>
+            <input {...inputProps} onChange={onChange} className="formInputs"/>
         </div>
     )
 }

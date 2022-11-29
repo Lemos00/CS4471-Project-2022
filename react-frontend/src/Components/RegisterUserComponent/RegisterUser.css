@@ -4,3 +4,31 @@
     justify-content: center;
     height: 100vh;
 }
+
+.registerForm {
+    background-color: white;
+    padding: 0px 60px;
+    flex-direction: column;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.loginTitle {
+    color: rgb(6, 6, 81);
+    text-align: center;
+}
+
+.registerSubmitButton {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(61, 43, 226);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}

@@ -2,6 +2,7 @@ import React from "react";
 // import "../RegisterUserComponent/RegisterUser";
 import RegisterUser from "../RegisterUserComponent/RegisterUser";
 import LoginComponent from "../LoginComponent/LoginComponent";
+import "./LoginPage.css"
 
 const LoginPage = () => {
 
@@ -12,7 +13,7 @@ const LoginPage = () => {
         <div className="loginCover">
             
             {showRegister ? <RegisterUser setShowRegister={setShowRegister}/> 
-                : <LoginComponent setShowRegister={setShowRegister}/>};
+                : <LoginComponent setShowRegister={setShowRegister}/>}
         
         </div>
      );
