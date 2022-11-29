@@ -26,7 +26,7 @@ const RegisterUser = ({setShowRegister}) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     }
 
-    // inputs to map
+    // inputs related to each Field input element / component
     const inputs = [
         {
             id: 1,
@@ -34,24 +34,33 @@ const RegisterUser = ({setShowRegister}) => {
             type: "text",
             placeholder: "Username",
             label: "Username",
+            errorMessage: "Username cannot contain any special characters, should be 3-20 chars long!",
+            pattern: "^[A-Za-z0-9]{3,20}",
+            required: true,
         },
         {
             id: 2,
             name: "password",
-            type: "text",
+            type: "password",
             placeholder: "Password",
             label: "Password",
+            errorMessage: "Password should be 3-20 characters long - Cannot contain special chars",
+            pattern: "^[A-Za-z0-9]{3,20}",
+            required: true,
         },
         {
             id: 3,
             name: "reenterPassword",
-            type: "text",
+            type: "password",
             placeholder: "re-enter Password",
             label: "re-enter Password",
+            errorMessage: "Passwords should match.",
+            pattern: values.password,
+            required: true,
         },
     ]
 
-    console.log(values);
+    // console.log(values);
     return ( 
         <div className="registerCover">
             <form action="" method="get" onSubmit={handleSubmit} className="registerForm">
