@@ -1,0 +1,16 @@
+.staffCover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.staffForm {
+    background-color: white;
+    padding: 0px 60px;
+    flex-direction: column;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}

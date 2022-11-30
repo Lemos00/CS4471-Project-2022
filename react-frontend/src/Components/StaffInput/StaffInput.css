@@ -1,0 +1,19 @@
+.formInputs {
+    padding: 6px;
+    margin: 10px 10px;
+}
+
+.inputSpan {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+input:invalid[focus="true"] {
+    border: 1px solid red;
+}
+
+input:invalid[focus="true"] ~ .inputSpan {
+    display: block
+}
