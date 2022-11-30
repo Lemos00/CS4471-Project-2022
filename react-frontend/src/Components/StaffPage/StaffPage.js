@@ -1,5 +1,6 @@
 import React from "react";
 import "./StaffPage.css"
+import StaffInput from "../StaffInput/StaffInput.js"
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
 const StaffPage = () => {
@@ -8,12 +9,51 @@ const StaffPage = () => {
 
     // define values for form
     const [values, setValues] = React.useState({
-        movieId: "",
         title: "",
         imageUrl: "",
         releaseDate: "",
         ageRating: "",
     });
+
+    const inputs = [
+        {
+            id: 1,
+            name: "title",
+            type: "text",
+            placeholder: "Movie Title",
+            label: "Movie Title",
+            errorMessage: "Movie Title should be at least 1 chars long",
+            pattern: "^[A-Za-z0-9]{1,20}",
+            required: true,
+        },
+        {
+            id: 2,
+            name: "imageUrl",
+            type: "text",
+            placeholder: "Image URL",
+            label: "Image URL",
+            errorMessage: "Movie URL should be valid link",
+            pattern: "(https?://)[A-Za-z0-9./+_=?()[{-]*",
+            required: true,
+        },
+        {
+            id: 3,
+            name: "releaseDate",
+            type: "date",
+            label: "Release Date",
+            required: true,
+        },
+        {
+            id: 4,
+            name: "ageRating",
+            type: "text",
+            placeholder: "Age Rating",
+            label: "Age Rating",
+            errorMessage: "Age Rating should be realistic :)",
+            pattern: "^[A-Za-z0-9]{1,3}",
+            required: true,
+        },
+    ]
 
     // ========== METHODS =========
     const handleSubmit = (event) => {
@@ -29,8 +69,17 @@ const StaffPage = () => {
 
     return (
         <div className="staffCover">
-            <form action="" className="staffForm">
-                <h1>Hello there</h1>
+            <form action="" onSubmit={handleSubmit} className="staffForm">
+                <h1>Create a Movie</h1>
+                {inputs.map((input) => {
+                   return <StaffInput
+                        key = {input.id}
+                        {...input}
+                        value={values[input.name]} 
+                        onChange={onChange}
+                    /> 
+                })}
+                <button className="movieSubmitButton">Submit</button>
             </form>
         
         </div>

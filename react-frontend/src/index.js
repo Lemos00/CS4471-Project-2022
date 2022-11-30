@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import StaffPage from './Components/StaffPage/StaffPage';
+import App from "./App.js"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StaffPage />
+    <App />
   </React.StrictMode>
 );
 
