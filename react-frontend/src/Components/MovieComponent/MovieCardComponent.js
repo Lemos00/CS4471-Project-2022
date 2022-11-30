@@ -1,11 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import "./MovieCardComponent.css";
+import Modal from '../Modal/Modal';
 
 // Props to Pass:
 //     - imageUrl: url of the imageUrl
 //     - title: title of the Movie
 //     - body: body description of the movie
 const MovieCardComponent = (props) => {
+
+    const [isShown, setIsShown] = useState(false);
+    const handleClick = event => {
+
+        //setIsShown(current => !current);
+ 
+        setIsShown(true);
+      };
+
     return (
         <div className="cardContainer">
             <div className="imageContainer">
@@ -19,12 +29,14 @@ const MovieCardComponent = (props) => {
                     <p>{props.body}</p>
                 </div> */}
                 <div className="cardButton">
-                    <button>
+                    <button onClick={handleClick}>
                         See Sessions
                     </button>
+                    {isShown && <Modal />}
                 </div>
             </div>
         </div>
+        
     )
 }
 
