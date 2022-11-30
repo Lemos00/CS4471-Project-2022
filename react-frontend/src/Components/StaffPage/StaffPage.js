@@ -4,9 +4,9 @@ import StaffInput from "../StaffInput/StaffInput.js"
 import MovieCardComponent from "../MovieCardComponent/MovieCardComponent.js"
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const StaffPage = () => {
+const StaffPage = (setShowLogin) => {
 
-    // const [showRegister, setShowRegister] = React.useState(false);
+    // setShowLogin will show login on page (use on nav bar)
 
     // define values for form
     const [values, setValues] = React.useState({
