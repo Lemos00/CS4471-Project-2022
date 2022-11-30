@@ -9,7 +9,7 @@ const LoginPage = () => {
     const [showRegister, setShowRegister] = React.useState(false);
 
 
-    return ( 
+    return (
         <div className="loginCover">
             
             {showRegister ? <RegisterUser setShowRegister={setShowRegister}/> 

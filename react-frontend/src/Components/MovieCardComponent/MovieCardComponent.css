@@ -39,9 +39,9 @@ h3 {
     justify-content: space-evenly;
 }
 
-p {
-    margin: 0;
+.cardReleaseDate {
     padding: 0;
+    margin:0;
 }
 
 .cardButton {

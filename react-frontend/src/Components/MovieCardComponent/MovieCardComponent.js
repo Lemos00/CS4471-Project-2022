@@ -15,9 +15,9 @@ const MovieCardComponent = (props) => {
                 <div className="cardTitle">
                     <h3>{props.title}</h3>
                 </div>
-                {/* <div className="cardBody">
-                    <p>{props.body}</p>
-                </div> */}
+                <div className="cardReleaseDate">
+                    <p>{props.releaseDate}</p>
+                </div>
                 <div className="cardButton">
                     <button>
                         See Sessions
