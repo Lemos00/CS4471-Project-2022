@@ -24,7 +24,7 @@ const StaffPage = () => {
             label: "Movie Title",
             errorMessage: "Movie Title should be at least 1 chars long",
             // pattern: "^[A-Za-z0-9\s]{1,20}",
-            pattern: "[a-zA-Z ]+",
+            pattern: "[a-zA-Z0-9 ]+",
             required: true,
         },
         {
