@@ -38,4 +38,5 @@ body {
 
 .listItem:hover {
     background-color: rgba(184, 141, 240, 0.618);
+    cursor: pointer;
 }
