@@ -1,6 +1,7 @@
 import React from "react";
 import "./StaffPage.css"
 import StaffInput from "../StaffInput/StaffInput.js"
+import MovieCardComponent from "../MovieCardComponent/MovieCardComponent.js"
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
 const StaffPage = () => {
@@ -82,6 +83,11 @@ const StaffPage = () => {
                 })}
                 <button className="movieSubmitButton">Submit</button>
             </form>
+            
+            <div className="moviePreview">
+                <h3>Posting Preview</h3>
+                <MovieCardComponent title={values.title} imageUrl={values.imageUrl} releaseDate={values.releaseDate}/>
+            </div>
         
         </div>
      );

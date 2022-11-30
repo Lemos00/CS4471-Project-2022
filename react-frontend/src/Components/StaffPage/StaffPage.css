@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .staffForm {
@@ -33,4 +33,8 @@
 .staffTitle {
     color: rgb(6, 6, 81);
     text-align: center;
+}
+
+.moviePreview {
+    margin-left: 5em;
 }
