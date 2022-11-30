@@ -6,7 +6,7 @@ const MainPages = (setShowLogin) => {
 
     const [showStaff, setShowStaff] = React.useState(false);
 
-    // setShowLogin passed to login component, on the event of successful login
+    // setShowLogin passed to login component, on the event of logoff
     return (
         <div className="mainPageCover">
             
