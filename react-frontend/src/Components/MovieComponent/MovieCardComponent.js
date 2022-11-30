@@ -6,7 +6,6 @@ import "./MovieCardComponent.css";
 //     - title: title of the Movie
 //     - body: body description of the movie
 const MovieCardComponent = (props) => {
-    console.log(props)
     return (
         <div className="cardContainer">
             <div className="imageContainer">
