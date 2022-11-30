@@ -1,7 +1,6 @@
 import React from "react";
 import "./NavBar.css"
 
-// MAIN COMPONENT, LOGIN PAGE MAIN
 const NavBar = ({setShowLogin}) => {
 
     const handleLogout = (state) => {
