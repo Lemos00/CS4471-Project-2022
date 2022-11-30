@@ -30,12 +30,13 @@
 
 .cardTitle {
     margin-bottom: 0.5rem;
-    justify-items: center;
 }
 
 h3 {
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 p {
