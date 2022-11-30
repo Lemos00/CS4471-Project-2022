@@ -68,7 +68,7 @@ const RegisterUser = ({setShowRegister}) => {
             placeholder: "Last Name",
             label: "Last Name",
             errorMessage: "Last name should be 1-20 characters long - Cannot contain special chars",
-            pattern: "^[A-Za-z0-9]{3,20}",
+            pattern: "^[A-Za-z0-9 ]{3,20}",
             required: true,
         },
         {

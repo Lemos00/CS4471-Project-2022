@@ -10,9 +10,11 @@ const NavBar = ({setShowLogin}) => {
     return (
         <div className="NavBarCover">
             <nav className="nav">
-                <div className="siteTitle">Site name</div>
+                <div className="siteTitle">Book-a-Movie</div>
                 <ul className="itemsList">
-                    <li className="listItem">Image here</li>
+                    {/* <li className="listItem">
+                        <img className="navImage" src="https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png" alt="" />
+                    </li> */}
                     <li className="listItem">Username</li>
                     <li className="listItem" onClick = {() => {handleLogout(true)}}>Logout</li>
                 </ul>
