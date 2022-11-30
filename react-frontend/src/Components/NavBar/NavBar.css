@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.nav {
+    background-color: rgb(84, 68, 225);
+    color: rgb(232, 231, 231);
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.itemsList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.siteTitle {
+    color: inherit;
+    height: 100%;
+    display: flex;
+    padding: .25rem;
+    font-size: 30px;
+}
+
+.listItem {
+    font-size: 20px;
+    height: 100%;
+}
+
+.listItem:hover {
+    background-color: rgba(184, 141, 240, 0.618);
+}

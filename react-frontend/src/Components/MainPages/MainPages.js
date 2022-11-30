@@ -2,7 +2,7 @@ import React from "react";
 import StaffPage from "../StaffPage/StaffPage";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const MainPages = (setShowLogin) => {
+const MainPages = ({setShowLogin}) => {
 
     const [showStaff, setShowStaff] = React.useState(false);
 
@@ -11,7 +11,7 @@ const MainPages = (setShowLogin) => {
         <div className="mainPageCover">
             
             {showStaff ? <StaffPage setShowStaff={setShowStaff}/> 
-                : <StaffPage setShowStaff={setShowStaff}/>}
+                : <StaffPage setShowStaff={setShowStaff} setShowLogin={setShowLogin}/>}
         
         </div>
      );
