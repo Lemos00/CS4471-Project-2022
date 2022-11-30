@@ -23,7 +23,8 @@ const StaffPage = () => {
             placeholder: "Movie Title",
             label: "Movie Title",
             errorMessage: "Movie Title should be at least 1 chars long",
-            pattern: "^[A-Za-z0-9]{1,20}",
+            // pattern: "^[A-Za-z0-9\s]{1,20}",
+            pattern: "[a-zA-Z ]+",
             required: true,
         },
         {
@@ -70,7 +71,7 @@ const StaffPage = () => {
     return (
         <div className="staffCover">
             <form action="" onSubmit={handleSubmit} className="staffForm">
-                <h1>Create a Movie</h1>
+                <h1 className="staffTitle">Create a Movie</h1>
                 {inputs.map((input) => {
                    return <StaffInput
                         key = {input.id}

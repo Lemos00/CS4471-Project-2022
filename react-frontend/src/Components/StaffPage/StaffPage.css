@@ -29,3 +29,8 @@
     margin-bottom: 30px;
     transition: 0.5s;
 }
+
+.staffTitle {
+    color: rgb(6, 6, 81);
+    text-align: center;
+}
