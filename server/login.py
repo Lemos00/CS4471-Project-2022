@@ -9,11 +9,12 @@ SALTING_REALM_NAME = "@GROUP_6_AMAZING"
 class LoginServer:
     """This server will be related to the login part of the code"""
 
-    def __init__(self) -> None:
+    # def __init__(self) -> None:
         # with open("./python-login/users.json", "rb") as file:
             # self.users = {k: bytes.fromhex(v) for k, v in json.load(file).items()}
-        with open("./Users.json", "rb") as file:
-                self.users = json.load(file)
+        # with open("./Users.json", "rb") as file:
+        #         self.users = json.load(file)
+
 
 
     def derive_secret_key(self, username: str, password: str) -> bytes:

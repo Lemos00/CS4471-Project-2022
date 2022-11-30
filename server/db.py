@@ -51,7 +51,7 @@ class Database:
             CREATE TABLE IF NOT EXISTS theatre (
                 theatre_id INTEGER PRIMARY KEY,
                 users_id TEXT,
-                current_seats INTEGER,
+                current_seats INTEGER
             )
         ''')
         self.connection.commit()
