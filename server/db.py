@@ -79,10 +79,27 @@ class Database:
         except sqlite3.Error:
             return False
     
-    def get_user(self, username: str) -> typing.Optional[dict]:
+    def get_user_by_username(self, username: str) -> typing.Optional[dict]:
         self.cursor.execute('''
             SELECT * FROM user WHERE username = ?
         ''', (username,))
+        data = self.cursor.fetchone()
+        if data is None:
+            return None
+        return {
+            'user_id': data[0],
+            'username': data[1],
+            'priv_key': data[2],
+            'hash_password': data[3],
+            'email': data[4],
+            'first_name': data[5],
+            'last_name': data[6],
+        }
+    
+    def get_user_by_id(self, user_id: str) -> typing.Optional[dict]:
+        self.cursor.execute('''
+            SELECT * FROM user WHERE user_id = ?
+        ''', (user_id,))
         data = self.cursor.fetchone()
         if data is None:
             return None

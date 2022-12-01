@@ -9,7 +9,7 @@ login_server = LoginServer()
 # GET /user/<user_id>
 @user_blueprint.route('/<user_id>', methods=['GET'])
 def get_user(user_id: str):
-    data = db.get_user(user_id)
+    data = db.get_user_by_id(user_id)
 
     # If the user doesn't exist, return a 404
     if data is None:
