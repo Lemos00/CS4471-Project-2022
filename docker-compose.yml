@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  server:
+    container_name: flask-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    restart: 'unless-stopped'
+  
+  frontend:
+    container_name: react-frontend
+    build:
+      context: ./react-frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+      - 80:80
+    restart: 'unless-stopped'
