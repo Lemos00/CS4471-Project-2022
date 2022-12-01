@@ -6,7 +6,7 @@ import React from 'react';
 function App() {
 
     const [showLogin, setShowLogin] = React.useState(true);
-    const [pageToShow, setPageToShow] = React.useState(null);
+    const [pageToShow, setPageToShow] = React.useState(null); // pageToShow = [typeOfPage, UsernameForNavBar]
 
     return (
     <div className="App">
