@@ -22,7 +22,8 @@ class Database:
                 hash_password TEXT,
                 email TEXT,
                 first_name TEXT,
-                last_name TEXT
+                last_name TEXT,
+                admin_status INTEGER
             )
         ''')
         self.cursor.execute('''
@@ -68,12 +69,12 @@ class Database:
             return False
     
     def add_user(self, username: str, priv_key: str, hash_password: str,
-        email: str, first_name: str, last_name: str) -> bool:
+        email: str, first_name: str, last_name: str, admin_status: int) -> bool:
         try:
             self.cursor.execute('''
-                INSERT INTO user (username, priv_key, hash_password, email, first_name, last_name)
-                VALUES (?, ?, ?, ?, ?, ?)
-            ''', (username, priv_key, hash_password, email, first_name, last_name))
+                INSERT INTO user (username, priv_key, hash_password, email, first_name, last_name, admin_status)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', (username, priv_key, hash_password, email, first_name, last_name, admin_status))
             self.connection.commit()
             return True
         except sqlite3.Error:
@@ -94,6 +95,7 @@ class Database:
             'email': data[4],
             'first_name': data[5],
             'last_name': data[6],
+            'admin_status': data[7]
         }
     
     def get_user_by_id(self, user_id: str) -> typing.Optional[dict]:
@@ -111,6 +113,7 @@ class Database:
             'email': data[4],
             'first_name': data[5],
             'last_name': data[6],
+            'admin_status': data[7]
         }
     
     def get_movie(self, movie_id: int) -> typing.Optional[dict]:

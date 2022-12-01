@@ -35,7 +35,7 @@ def add_user():
     hash_password = login_server.encryptPassword(data['username'], data['password']).hex()
 
     result = db.add_user(data['username'], priv_key, hash_password,
-        data['email'], data['first_name'], data['last_name'])
+        data['email'], data['first_name'], data['last_name'], data['admin_status'])
 
     # If the user already exists, return a 409
     if not result:
@@ -48,6 +48,7 @@ def add_user():
     return jsonify({
         'status': True,
         'message': 'User added',
+        'admin_status': data['admin_status'],
     }), 201
 
 # POST /user/login
@@ -71,6 +72,7 @@ def login_user():
         return jsonify({
             'status': True,
             'message': 'Login successful',
+            'admin_status': data['admin_status']
         }), 200
     else:
         return jsonify({
