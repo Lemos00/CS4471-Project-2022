@@ -9,16 +9,19 @@ const LoginComponent = ({setShowRegister, setShowLogin}) => {
     }
 
     const handleLogin = (successful) => {
-        // const username = getUsername();
-        // const password = getPassword();
+        const username = getUsername();
+        const password = getPassword();
         
-        // const request = {username: username, password: password};
+        const request = {username: username, password: password};
         
-        // const result = Axios.post("http://127.0.0.1:5000/user/login", request).then(
-        //     (response) => {
-        //         console.log(response);
-        // });
-        setShowLogin(successful);
+        const result = Axios.post("http://127.0.0.1:5000/user/login", request).then(
+            (response) => {
+                if (response.data.status) {
+                    // login is successful, check for admin
+                    setShowLogin(successful);
+                    console.log(response.data);
+                }
+        });
     }
 
     const getUsername = () => {
