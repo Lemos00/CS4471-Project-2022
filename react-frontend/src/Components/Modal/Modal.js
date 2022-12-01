@@ -12,6 +12,11 @@ const Modal = props => {
         console.log(event);
       };
 
+    const handleCost = event => {
+        console.log("yo");
+        document.getElementById("lblName").innerHTML = "Total: $" + (document.getElementById("tickets").selectedIndex + 1)*8.5
+    };
+
     return (
         <div className="modal">
             <div className="modal-content">
@@ -22,8 +27,8 @@ const Modal = props => {
                     Movie Desc
                 </div>
                 <div className="modal-body2">
-                    Number of tickets: 
-                    <select name="cars" id="cars" onClick='change()'>
+                    <label>Please select the amount of tickets you would like to purchase (maximum 15 per purchase). Each ticket is $8.50. Taxes are included. </label> 
+                    <select name="tickets" id="tickets" onChange={() => {handleCost(true);}}>
                         <option value="option1">1</option>
                         <option value="option2">2</option>
                         <option value="option3">3</option>
@@ -42,23 +47,16 @@ const Modal = props => {
                     </select>
                 </div>
                 <div className="modal-body3">
-                    Total: 
-                </div>
-                <div className="modal-body4">
-                    <label id="lblName"></label>
+                    <label id="lblName">Total: </label> 
                 </div>
                 <div className="modal-footer">
                     <button onClick={() => {handleClick(true);}} className="payButton">Pay</button>
                     <button onClick={() => {handleClick(true);}} className="closeButton">Close</button>
                 </div>
-                
             </div>
-                <script>
-                    function change(){
-                        document.getElementById('lblName').innerHTML = cars.getElementById
-                    }
-                </script>
         </div>
+        
     )
+    
 }
 export default Modal
