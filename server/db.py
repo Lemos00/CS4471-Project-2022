@@ -128,6 +128,21 @@ class Database:
             'age_rating': data[4],
         }
     
+    def get_all_movies(self) -> typing.List[dict]:
+        self.cursor.execute('''
+            SELECT * FROM movie
+        ''')
+        data = self.cursor.fetchall()
+        if data is None:
+            return []
+        return [{
+            'movie_id': row[0],
+            'title': row[1],
+            'image_url': row[2],
+            'release_date': row[3],
+            'age_rating': row[4],
+        } for row in data]
+    
     def add_receipt(self, ticket_id: str, user_id: str, total_tickets: int) -> bool:
         try:
             self.cursor.execute('''
@@ -211,5 +226,5 @@ class Database:
             return False
 
 db = Database()
-# db.add_movie('The Matrix', 'https://www.imdb.com/title/tt0133093/mediaviewer/rm2050061312/', '1999-03-31', '15')
+db.add_movie('The Matrix', 'https://www.imdb.com/title/tt0133093/mediaviewer/rm2050061312/', '1999-03-31', '15')
 # print(db.get_movie(1))
