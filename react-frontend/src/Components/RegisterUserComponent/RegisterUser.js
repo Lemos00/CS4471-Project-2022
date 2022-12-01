@@ -2,6 +2,7 @@ import React from "react"
 import FormInput from "../FormInput/FormInput"
 import "./RegisterUser.css"
 import Axios from "axios";
+import OperationFailedComponent from "../OperationFailedComponent/OperationFailedComponent";
 
 const RegisterUser = ({setShowRegister}) => {
     // make input states
@@ -42,10 +43,10 @@ const RegisterUser = ({setShowRegister}) => {
                     console.log(response);
                 } else {
                     console.log("DID NOT CREATE");
-                    console.log(response);
+                    setRequestError(true);
                 }
             }
-        )
+        ).catch((error) => {setRequestError(true);});
     }
 
     const onChange = (e) => {
@@ -131,6 +132,7 @@ const RegisterUser = ({setShowRegister}) => {
                     /> 
                 })}
                 <button className="registerSubmitButton">Submit</button>
+                {requestError ? <OperationFailedComponent error={"Could not Register User"} /> : null}
             </form>
             <button className="goBackButton" onClick={() => {handleShow(false);}}>Home Page</button>
         </div>

@@ -1,8 +1,11 @@
 import "./Login.css"
 import Axios from "axios";
 import React from "react"
+import OperationFailedComponent from "../OperationFailedComponent/OperationFailedComponent";
 
 const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
+
+    const [requestError, setRequestError] = React.useState(false);
 
     const handleShow = (state) => {
         setShowRegister(state);
@@ -16,6 +19,7 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
         
         const result = Axios.post("http://127.0.0.1:5000/user/login", request).then(
             (response) => {
+                console.log(response)
                 if (response.data.status) {
                     // login is successful, check for admin
                     setShowLogin(successful);
@@ -28,7 +32,7 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
                         setPageToShow(["normal", username]);
                     }
                 }
-        });
+        }).catch((error) => {setRequestError(true);});
     }
 
     const getUsername = () => {
@@ -56,6 +60,7 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
                     <div className="alt-login">
                         <div className="login-btn" id="register" onClick= {() => {handleShow(true); }}>Register New User</div>
                     </div>
+                    {requestError ? <OperationFailedComponent error={"Username or password invalid"} /> : null}
                 </div>
             </form>
         </div>
