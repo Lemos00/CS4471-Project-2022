@@ -22,10 +22,10 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
                     console.log(response.data);
                     if (response.data.admin_status > 0) {
                         console.log("ADMIN");
-                        setPageToShow("admin");
+                        setPageToShow(["admin", username]);
                     } else {
                         console.log("NOT ADMIN");
-                        setPageToShow("normal");
+                        setPageToShow(["normal", username]);
                     }
                 }
         });

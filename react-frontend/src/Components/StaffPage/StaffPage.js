@@ -5,7 +5,7 @@ import MovieCardComponent from "../MovieCardComponent/MovieCardComponent.js"
 import NavBar from "../NavBar/NavBar";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const StaffPage = ({setShowLogin}) => {
+const StaffPage = ({setShowLogin, navBarUsername}) => {
 
     // setShowLogin will show login on page (use on nav bar)
 
@@ -71,7 +71,7 @@ const StaffPage = ({setShowLogin}) => {
 
     return (
         <div className="staffMain">
-            <NavBar setShowLogin={setShowLogin}/>
+            <NavBar setShowLogin={setShowLogin} navBarUsername={navBarUsername}/>
             <div className="staffCover">
                 {/* <NavBar setShowLogin={setShowLogin}/> */}
                 <form action="" onSubmit={handleSubmit} className="staffForm">

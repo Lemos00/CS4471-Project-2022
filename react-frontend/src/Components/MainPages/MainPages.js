@@ -7,8 +7,8 @@ const MainPages = ({setShowLogin, pageToShow}) => {
     return (
         <div className="mainPageCover">
             
-            {pageToShow === "admin" ? <StaffPage setShowLogin={setShowLogin}/> 
-                : <StaffPage setShowLogin={setShowLogin}/>}
+            {pageToShow[0] === "admin" ? <StaffPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/> 
+                : <StaffPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/>}
         
         </div>
      );
