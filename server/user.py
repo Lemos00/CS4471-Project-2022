@@ -56,7 +56,13 @@ def login_user():
     # Get the user data from the request
     data = request.get_json()
 
-    user = db.get_user(data['username'])
+    user = db.get_user_by_username(data['username'])
+    
+    if not user:
+        return jsonify({
+            'status': False,
+            'message': 'Login failed',
+        }), 401
 
     priv_key = user['priv_key']
     decrypted_password = login_server.decrypt(priv_key, bytes.fromhex(user['hash_password']))

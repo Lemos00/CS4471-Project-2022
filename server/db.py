@@ -226,5 +226,5 @@ class Database:
             return False
 
 db = Database()
-db.add_movie('The Matrix', 'https://www.imdb.com/title/tt0133093/mediaviewer/rm2050061312/', '1999-03-31', '15')
+# db.add_movie('The Matrix', 'https://www.imdb.com/title/tt0133093/mediaviewer/rm2050061312/', '1999-03-31', '15')
 # print(db.get_movie(1))
