@@ -21,6 +21,21 @@ def get_movie(movie_id: str):
     # Otherwise, return the movie data
     return jsonify(data), 200
 
+# GET /movie/list
+@movie_blueprint.route('/list', methods=['GET'])
+def get_all_movies():
+    data = db.get_all_movies()
+
+    # If there are no movies, return a 404
+    if data is None:
+        return jsonify({
+            'status': False,
+            'message': 'No movies found',
+        }), 404
+    
+    # Otherwise, return the movie data
+    return jsonify(data), 200
+
 # POST /movie/add
 @movie_blueprint.route('/add', methods=['POST'])
 def add_movie():

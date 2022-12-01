@@ -8,7 +8,7 @@
 
 .registerForm {
     background-color: white;
-    padding: 0px 60px;
+    /* padding: 0px 60px; */
     flex-direction: column;
     width: 250px;
     border-radius: 5px;
@@ -21,7 +21,7 @@
 }
 
 .registerSubmitButton {
-    width: 100%;
+    width: 70%;
     height: 50px;
     padding: 10px;
     border: none;

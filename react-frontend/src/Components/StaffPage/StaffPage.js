@@ -2,9 +2,10 @@ import React from "react";
 import "./StaffPage.css"
 import StaffInput from "../StaffInput/StaffInput.js"
 import MovieCardComponent from "../MovieCardComponent/MovieCardComponent.js"
+import NavBar from "../NavBar/NavBar";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const StaffPage = (setShowLogin) => {
+const StaffPage = ({setShowLogin, navBarUsername}) => {
 
     // setShowLogin will show login on page (use on nav bar)
 
@@ -69,25 +70,29 @@ const StaffPage = (setShowLogin) => {
     }
 
     return (
-        <div className="staffCover">
-            <form action="" onSubmit={handleSubmit} className="staffForm">
-                <h1 className="staffTitle">Create a Movie</h1>
-                {inputs.map((input) => {
-                   return <StaffInput
-                        key = {input.id}
-                        {...input}
-                        value={values[input.name]} 
-                        onChange={onChange}
-                    /> 
-                })}
-                <button className="movieSubmitButton">Submit</button>
-            </form>
+        <div className="staffMain">
+            <NavBar setShowLogin={setShowLogin} navBarUsername={navBarUsername}/>
+            <div className="staffCover">
+                {/* <NavBar setShowLogin={setShowLogin}/> */}
+                <form action="" onSubmit={handleSubmit} className="staffForm">
+                    <h1 className="staffTitle">Create a Movie</h1>
+                    {inputs.map((input) => {
+                    return <StaffInput
+                            key = {input.id}
+                            {...input}
+                            value={values[input.name]} 
+                            onChange={onChange}
+                        /> 
+                    })}
+                    <button className="movieSubmitButton">Submit</button>
+                </form>
+                
+                <div className="moviePreview">
+                    <h3>Posting Preview</h3>
+                    <MovieCardComponent title={values.title} imageUrl={values.imageUrl} releaseDate={values.releaseDate}/>
+                </div>
             
-            <div className="moviePreview">
-                <h3>Posting Preview</h3>
-                <MovieCardComponent title={values.title} imageUrl={values.imageUrl} releaseDate={values.releaseDate}/>
             </div>
-        
         </div>
      );
 }

@@ -8,7 +8,7 @@
 
 .staffForm {
     background-color: white;
-    padding: 0px 60px;
+    /* padding: 0px 60px; */
     flex-direction: column;
     width: 250px;
     border-radius: 5px;
@@ -16,7 +16,7 @@
 }
 
 .movieSubmitButton {
-    width: 100%;
+    width: 50%;
     height: 50px;
     padding: 10px;
     border: none;
