@@ -1,4 +1,5 @@
 import "./Login.css"
+import Axios from "axios";
 import React from "react"
 
 const LoginComponent = ({setShowRegister, setShowLogin}) => {
@@ -8,24 +9,42 @@ const LoginComponent = ({setShowRegister, setShowLogin}) => {
     }
 
     const handleLogin = (successful) => {
+        // const username = getUsername();
+        // const password = getPassword();
+        
+        // const request = {username: username, password: password};
+        
+        // const result = Axios.post("http://127.0.0.1:5000/user/login", request).then(
+        //     (response) => {
+        //         console.log(response);
+        // });
         setShowLogin(successful);
-        console.log(successful);
     }
 
+    const getUsername = () => {
+        const username = document.getElementById("username");
+        console.log(username.value);
+        return username.value;
+    }
+
+    const getPassword = () => {
+        const password = document.getElementById("password");
+        console.log(password.value);
+        return password.value;
+    }
 
     return ( 
         <div className="loginCover">
             <form action="" method="post">
                 <div className="loginPage">
                     <h1>Book-A-Movie</h1>
-                    <input className="loginInput" type="text" placeholder="username" />
-                    <input className="loginInput" type="password" placeholder="password" />
+                    <input className="loginInput" id="username" type="text" placeholder="username" />
+                    <input className="loginInput" id ="password" type="password" placeholder="password" />
                     
                     <p className="text">Or login using</p>
                     <div className="login-btn" onClick= {() => {handleLogin(false);}}>Login</div>
                     <div className="alt-login">
-                        <div className="login-btn" id="forgot">Forgot Password</div>
-                        <div className="login-btn" id="register" onClick= {() => {handleShow(true);}}>Register New User</div>
+                        <div className="login-btn" id="register" onClick= {() => {handleShow(true); }}>Register New User</div>
                     </div>
                 </div>
             </form>
