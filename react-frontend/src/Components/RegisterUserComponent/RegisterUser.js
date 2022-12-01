@@ -1,6 +1,8 @@
 import React from "react"
 import FormInput from "../FormInput/FormInput"
 import "./RegisterUser.css"
+import Axios from "axios";
+import OperationFailedComponent from "../OperationFailedComponent/OperationFailedComponent";
 
 const RegisterUser = ({setShowRegister}) => {
     // make input states
@@ -13,6 +15,8 @@ const RegisterUser = ({setShowRegister}) => {
         reenterPassword: "",
     });
 
+    const [requestError, setRequestError] = React.useState(false);
+
     // handle login display after user register
     const handleShow = (state) => {
         setShowRegister(state);
@@ -22,7 +26,27 @@ const RegisterUser = ({setShowRegister}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(Object.fromEntries(data.entries()));
+        const entries = Object.fromEntries(data.entries());
+
+        const request = {
+            "username": entries.username,
+            "password": entries.password,
+            "email": entries.email,
+            "first_name": entries.FirstName,
+            "last_name": entries.LastName,
+            "admin_status": 0
+        }
+        const result = Axios.post("http://127.0.0.1:5000/user/register", request).then(
+            (response) => {
+                if (response.data.status) {
+                    console.log("SUCCESSFUL CREATION");
+                    console.log(response);
+                } else {
+                    console.log("DID NOT CREATE");
+                    setRequestError(true);
+                }
+            }
+        ).catch((error) => {setRequestError(true);});
     }
 
     const onChange = (e) => {
@@ -108,6 +132,7 @@ const RegisterUser = ({setShowRegister}) => {
                     /> 
                 })}
                 <button className="registerSubmitButton">Submit</button>
+                {requestError ? <OperationFailedComponent error={"Could not Register User"} /> : null}
             </form>
             <button className="goBackButton" onClick={() => {handleShow(false);}}>Home Page</button>
         </div>

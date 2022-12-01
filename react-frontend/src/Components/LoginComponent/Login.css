@@ -35,7 +35,7 @@
     width: 80%;
     height: 3em;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .alt-login div {
@@ -67,13 +67,14 @@
 .login-btn {
     width: 50%;
     height: 3em;
-    background-color: rgb(32, 177, 255);
+    background-color: rgb(61, 43, 226);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
     border-radius: 0.25em;
     cursor: pointer;
+    color: white;
 }
 .login-btn:hover {
     transform: scale(1.25);

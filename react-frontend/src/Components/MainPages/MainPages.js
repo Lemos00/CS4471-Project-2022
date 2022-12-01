@@ -2,16 +2,13 @@ import React from "react";
 import StaffPage from "../StaffPage/StaffPage";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const MainPages = ({setShowLogin}) => {
-
-    const [showStaff, setShowStaff] = React.useState(false);
-
+const MainPages = ({setShowLogin, pageToShow}) => {
     // setShowLogin passed to login component, on the event of logoff
     return (
         <div className="mainPageCover">
             
-            {showStaff ? <StaffPage setShowStaff={setShowStaff}/> 
-                : <StaffPage setShowStaff={setShowStaff} setShowLogin={setShowLogin}/>}
+            {pageToShow[0] === "admin" ? <StaffPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/> 
+                : <StaffPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/>}
         
         </div>
      );
