@@ -1,8 +1,8 @@
 import React from "react";
-import "./FormInput.css";
+import "./StaffInput.css";
 
 // COMPONENT UTILIZED IN THE REGISTER USER FORM
-const FormInput = (props) => {
+const StaffInput = (props) => {
     // take things gotten from props
     const { label, errorMessage, onChange, id, ...inputProps } = props;
 
@@ -30,4 +30,4 @@ const FormInput = (props) => {
     )
 }
 
-export default FormInput;
+export default StaffInput;

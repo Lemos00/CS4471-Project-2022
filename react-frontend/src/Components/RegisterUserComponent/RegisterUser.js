@@ -6,6 +6,9 @@ const RegisterUser = ({setShowRegister}) => {
     // make input states
     const [values, setValues] = React.useState({
         username: "",
+        email: "",
+        FirstName: "",
+        LastName: "",
         password: "",
         reenterPassword: "",
     });
@@ -40,6 +43,36 @@ const RegisterUser = ({setShowRegister}) => {
         },
         {
             id: 2,
+            name: "email",
+            type: "text",
+            placeholder: "Email@example.com",
+            label: "Email",
+            errorMessage: "email should be valid",
+            pattern: "^[A-Za-z0-9@.]{3,20}",
+            required: true,
+        },
+        {
+            id: 3,
+            name: "FirstName",
+            type: "text",
+            placeholder: "First Name",
+            label: "First Name",
+            errorMessage: "Name should be 1-20 characters long - Cannot contain special chars",
+            pattern: "^[A-Za-z0-9]{1,20}",
+            required: true,
+        },
+        {
+            id: 4,
+            name: "LastName",
+            type: "text",
+            placeholder: "Last Name",
+            label: "Last Name",
+            errorMessage: "Last name should be 1-20 characters long - Cannot contain special chars",
+            pattern: "^[A-Za-z0-9]{3,20}",
+            required: true,
+        },
+        {
+            id: 5,
             name: "password",
             type: "password",
             placeholder: "Password",
@@ -49,7 +82,7 @@ const RegisterUser = ({setShowRegister}) => {
             required: true,
         },
         {
-            id: 3,
+            id: 6,
             name: "reenterPassword",
             type: "password",
             placeholder: "re-enter Password",

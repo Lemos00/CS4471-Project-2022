@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import LoginPage from './Components/LoginPage/LoginPage';
+import MainPages from './Components/MainPages/MainPages';
+import React from 'react';
 
 function App() {
-  return (
+
+    const [showLogin, setShowLogin] = React.useState(true);
+
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {showLogin ? <LoginPage setShowLogin={setShowLogin}/>
+            : <MainPages setShowLogin={setShowLogin}/>}
     </div>
-  );
+    );
 }
+
+export default App;
