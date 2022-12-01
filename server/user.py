@@ -72,7 +72,7 @@ def login_user():
         return jsonify({
             'status': True,
             'message': 'Login successful',
-            'admin_status': data['admin_status']
+            'admin_status': user['admin_status']
         }), 200
     else:
         return jsonify({
