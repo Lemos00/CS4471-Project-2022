@@ -1,5 +1,6 @@
 import React from "react";
 import StaffPage from "../StaffPage/StaffPage";
+import MainPage from "../MainPage/MainPage";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
 const MainPages = (setShowLogin) => {
@@ -11,7 +12,7 @@ const MainPages = (setShowLogin) => {
         <div className="mainPageCover">
             
             {showStaff ? <StaffPage setShowStaff={setShowStaff}/> 
-                : <StaffPage setShowStaff={setShowStaff}/>}
+                : <MainPage setShowStaff={setShowStaff}/>}
         
         </div>
      );

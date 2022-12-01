@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    box-sizing: 0;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
 .modal{
     position: fixed;
     left: 0;
@@ -12,8 +18,11 @@
 }
 .modal-content{
     width:500px;
-    background-color: rgb(102, 179, 204);
+    background-color: white;
+    border-radius: 20px;
+    padding:20px
 }
+
 
 .modal-header1, .modal-footer{
     padding:10px
@@ -27,4 +36,22 @@
     padding: 10px;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
+}
+.payButton {
+    display: flex;
+    justify-content: center;
+}
+
+.payButton button{
+    padding: 0.5rem;
+    background-color: white;
+    border: none;
+    transition: 0.2s;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+}
+
+.payButton button:hover {
+    color: white;
+    background-color: rgb(61, 43, 226);
 }

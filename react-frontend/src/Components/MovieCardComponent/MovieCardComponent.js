@@ -8,12 +8,9 @@ import Modal from '../Modal/Modal';
 //     - body: body description of the movie
 const MovieCardComponent = (props) => {
 
-    const [isShown, setIsShown] = useState(false);
     const handleClick = event => {
-
-        //setIsShown(current => !current);
- 
-        setIsShown(true);
+        props.setShow(true);
+        console.log(event);
       };
 
     return (
@@ -29,10 +26,9 @@ const MovieCardComponent = (props) => {
                     <p>{props.releaseDate}</p>
                 </div>
                 <div className="cardButton">
-                    <button onClick={handleClick}>
+                    <button onClick= {() => {handleClick(true);}}>
                         See Sessions
                     </button>
-                    {isShown && <Modal />}
                 </div>
             </div>
         </div>
