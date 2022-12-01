@@ -2,7 +2,7 @@ import "./Login.css"
 import Axios from "axios";
 import React from "react"
 
-const LoginComponent = ({setShowRegister, setShowLogin}) => {
+const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
 
     const handleShow = (state) => {
         setShowRegister(state);
@@ -20,6 +20,13 @@ const LoginComponent = ({setShowRegister, setShowLogin}) => {
                     // login is successful, check for admin
                     setShowLogin(successful);
                     console.log(response.data);
+                    if (response.data.admin_status > 0) {
+                        console.log("ADMIN");
+                        setPageToShow("admin");
+                    } else {
+                        console.log("NOT ADMIN");
+                        setPageToShow("normal");
+                    }
                 }
         });
     }

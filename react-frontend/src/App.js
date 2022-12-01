@@ -6,11 +6,12 @@ import React from 'react';
 function App() {
 
     const [showLogin, setShowLogin] = React.useState(true);
+    const [pageToShow, setPageToShow] = React.useState(null);
 
     return (
     <div className="App">
-        {showLogin ? <LoginPage setShowLogin={setShowLogin}/>
-            : <MainPages setShowLogin={setShowLogin}/>}
+        {showLogin ? <LoginPage setShowLogin={setShowLogin} setPageToShow={setPageToShow}/>
+            : <MainPages setShowLogin={setShowLogin} pageToShow={pageToShow}/>}
     </div>
     );
 }

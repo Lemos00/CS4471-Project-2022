@@ -4,7 +4,7 @@ import LoginComponent from "../LoginComponent/LoginComponent";
 import "./LoginPage.css"
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const LoginPage = ({setShowLogin}) => {
+const LoginPage = ({setShowLogin, setPageToShow}) => {
 
     const [showRegister, setShowRegister] = React.useState(false);
 
@@ -13,7 +13,7 @@ const LoginPage = ({setShowLogin}) => {
         <div className="loginCover">
             
             {showRegister ? <RegisterUser setShowRegister={setShowRegister}/> 
-                : <LoginComponent setShowRegister={setShowRegister} setShowLogin={setShowLogin}/>}
+                : <LoginComponent setShowRegister={setShowRegister} setShowLogin={setShowLogin} setPageToShow={setPageToShow}/>}
         
         </div>
      );

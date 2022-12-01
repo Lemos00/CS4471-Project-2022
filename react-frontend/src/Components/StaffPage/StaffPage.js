@@ -5,7 +5,7 @@ import MovieCardComponent from "../MovieCardComponent/MovieCardComponent.js"
 import NavBar from "../NavBar/NavBar";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
-const StaffPage = ({setShowStaff, setShowLogin}) => {
+const StaffPage = ({setShowLogin}) => {
 
     // setShowLogin will show login on page (use on nav bar)
 
