@@ -25,7 +25,6 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
                     setShowLogin(successful);
                     console.log(response.data);
                     if (response.data.admin_status > 0) {
-                        console.log("ADMIN");
                         setPageToShow(["admin", username]);
                     } else {
                         console.log("NOT ADMIN");

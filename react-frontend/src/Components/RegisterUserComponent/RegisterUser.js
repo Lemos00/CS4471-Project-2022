@@ -3,6 +3,7 @@ import FormInput from "../FormInput/FormInput"
 import "./RegisterUser.css"
 import Axios from "axios";
 import OperationFailedComponent from "../OperationFailedComponent/OperationFailedComponent";
+import OperationSuccessfulComponent from "../OperationSuccessfulComponent/OperationSuccessfulComponent";
 
 const RegisterUser = ({setShowRegister}) => {
     // make input states
@@ -16,6 +17,7 @@ const RegisterUser = ({setShowRegister}) => {
     });
 
     const [requestError, setRequestError] = React.useState(false);
+    const [requestGood, setRequestGood] = React.useState(false);
 
     // handle login display after user register
     const handleShow = (state) => {
@@ -40,7 +42,7 @@ const RegisterUser = ({setShowRegister}) => {
             (response) => {
                 if (response.data.status) {
                     console.log("SUCCESSFUL CREATION");
-                    console.log(response);
+                    setRequestGood(true);
                 } else {
                     console.log("DID NOT CREATE");
                     setRequestError(true);
@@ -133,6 +135,7 @@ const RegisterUser = ({setShowRegister}) => {
                 })}
                 <button className="registerSubmitButton">Submit</button>
                 {requestError ? <OperationFailedComponent error={"Could not Register User"} /> : null}
+                {requestGood ? <OperationSuccessfulComponent message={"User successfully Created"} /> : null}
             </form>
             <button className="goBackButton" onClick={() => {handleShow(false);}}>Home Page</button>
         </div>

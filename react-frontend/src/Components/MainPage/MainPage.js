@@ -9,6 +9,7 @@ const MainPage = (props) => {
     
     const [movieList, setMovieList] = React.useState([]);
     const [showMoviesbutton, setShowMoviesButton] = React.useState(true);
+    const [displayModal, setDisplayModal] = React.useState(null);
 
     const handleList = () => {
         setShowMoviesButton(false);
@@ -35,8 +36,10 @@ const MainPage = (props) => {
             <div className="movieGrid">
                 {movieList ? movieList.map((movie) => {
                     return <MovieCardComponent className="movieChild" key={movie.id} title={movie.title} imageUrl={movie.image_url}
-                    releaseDate={movie.release_date}/>
+                    releaseDate={movie.release_date} setDisplayModal={setDisplayModal}/>
                 }) : null}
+
+                {displayModal ? <Modal movieData={displayModal} setShow={setDisplayModal}/> : null}
             </div>      
         </div>
     )

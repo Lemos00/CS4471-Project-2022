@@ -1,31 +1,37 @@
 import React from 'react'
 import "./Modal.css"
+import OperationSuccessfulComponent from '../OperationSuccessfulComponent/OperationSuccessfulComponent';
 
-const Modal = props => {
-    console.log(props);
+const Modal = (props) => {
+    const [success, setSuccess] = React.useState(false);
     if (!props) {
         return null;
-    }
+    } 
 
-    const handleClick = event => {
+    const handleClose = () => {
         props.setShow(false);
+    }
+    const handleClick = event => {
+        // props.setShow(false);
+        setSuccess(true);
         console.log(event);
       };
 
     const handleCost = event => {
-        console.log("yo");
         document.getElementById("lblName").innerHTML = "Total: $" + (document.getElementById("tickets").selectedIndex + 1)*8.5
     };
 
+    
     return (
         <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h4 className="modal-title">Morbius</h4>
+                    <h1 className="modal-title">{props.movieData.title}</h1>
+                    <img src={props.movieData.imageUrl} alt="" />
                 </div>
                 <hr></hr>
                 <div className="modal-body">
-                Dangerously ill with a rare blood disorder and determined to save others suffering his same fate, Dr. Morbius attempts a desperate gamble. While at first it seems to be a radical success, a darkness inside him is unleashed. Will good override evil -- or will Morbius succumb to his mysterious new urges?
+                Release date: {props.movieData.releaseDate}
                 </div>
                 <hr></hr>
                 <div className="modal-body2">
@@ -50,14 +56,20 @@ const Modal = props => {
                     </select>
                 </div>
                 <div className="modal-body3">
-                    <label id="lblName">Total: $0.00 </label> 
+                    <label>Please select food and beverages</label> 
+                    <hr></hr>
+
+                </div>
+                <div className="modal-body4">
+                    <label id="lblName">Total: $8.50 </label> 
                 </div>
                 <div className="modal-footer">
                     <div className="btn">
                         <button id="pay" onClick={() => {handleClick(true);}} >Pay</button>
-                        <button id="close" onClick={() => {handleClick(true);}} >Close</button>
+                        <button id="close" onClick={() => {handleClose(true);}} >Close</button>
                     </div>
                 </div>
+                {success ? <OperationSuccessfulComponent message={"successfully Emailed your tickets"}/> : null}
             </div>
         </div>
         
