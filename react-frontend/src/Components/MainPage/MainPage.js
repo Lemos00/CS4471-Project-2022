@@ -1,16 +1,50 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Modal from '../Modal/Modal.js'
 import MovieCardComponent from '../MovieCardComponent/MovieCardComponent.js'
+import Axios from "axios";
 
 const MainPage = props => {
-    const [show, setShow] = useState(false)
+    
+    const [movieList, setMovieList] = React.useState([]);
+
+    // React.useEffect(() => {
+    //     const result = Axios.get("http://127.0.0.1:5000/movie/list").then(
+    //         (response) => {
+    //             if (response.status < 400) {
+    //                 setMovieList(response.data);
+    //                 console.log(movieList);
+    //             }
+    //          }
+    //     )
+    // }, [])
+
+
+
+    const handleList = () => {
+        const result = Axios.get("http://127.0.0.1:5000/movie/list").then(
+            (response) => {
+                if (response.status < 400) {
+                    setMovieList(response.data);
+                }else {
+                    setMovieList = [];
+                }
+             }
+        )
+        console.log(movieList);
+    }
+
     return(
         <div className="mainCover">
-            <MovieCardComponent title="hello" imageUrl="https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/morbius_onesheet_1400x2100_he.jpg?itok=-jQVkWIe"
-                releaseDate="11-09-02" setShow={setShow}/>
-            <MovieCardComponent title="hello" imageUrl="https://upload.wikimedia.org/wikipedia/en/d/df/BarbieDancingPrincesses.jpg"
-                releaseDate="11-09-02" setShow={setShow}/>
-             {show ? <Modal setShow = {setShow}/> : null}
+                <div className="movieGrid">
+                    {movieList ? movieList.map((movie) => {
+                        console.log("movie: " + movie);
+                        return <MovieCardComponent key={movie.id} title={movie.title} imageUrl={movie.image_url}
+                        releaseDate={movie.release_date}/>
+                    }) : null}
+                </div>
+            <button onClick={handleList}>SEE LIST OF MOVIES</button>
+
+            {movieList ? <p>hello</p> : null}
              
         </div>
     )
