@@ -19,15 +19,12 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
         
         const result = Axios.post("http://127.0.0.1:5000/user/login", request).then(
             (response) => {
-                console.log(response)
                 if (response.data.status) {
                     // login is successful, check for admin
                     setShowLogin(successful);
-                    console.log(response.data);
                     if (response.data.admin_status > 0) {
                         setPageToShow(["admin", username]);
                     } else {
-                        console.log("NOT ADMIN");
                         setPageToShow(["normal", username]);
                     }
                 }
@@ -36,13 +33,11 @@ const LoginComponent = ({setShowRegister, setShowLogin, setPageToShow}) => {
 
     const getUsername = () => {
         const username = document.getElementById("username");
-        console.log(username.value);
         return username.value;
     }
 
     const getPassword = () => {
         const password = document.getElementById("password");
-        console.log(password.value);
         return password.value;
     }
 

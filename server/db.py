@@ -227,7 +227,3 @@ class Database:
             return True
         except sqlite3.Error:
             return False
-
-db = Database()
-db.add_movie('Morbius', 'https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/morbius_onesheet_1400x2100_he.jpg?itok=-jQVkWIe', '2022-04-1', '16')
-# print(db.get_movie(1))
