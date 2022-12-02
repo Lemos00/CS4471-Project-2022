@@ -3,11 +3,30 @@ import "./StaffPage.css"
 import StaffInput from "../StaffInput/StaffInput.js"
 import MovieCardComponent from "../MovieCardComponent/MovieCardComponent.js"
 import NavBar from "../NavBar/NavBar";
+import Axios from "axios";
+import OperationFailedComponent from "../OperationFailedComponent/OperationFailedComponent";
+import OperationSuccessfulComponent from "../OperationSuccessfulComponent/OperationSuccessfulComponent";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
 const StaffPage = ({setShowLogin, navBarUsername}) => {
+    const [requestError, setRequestError] = React.useState(false);
+    const [requestGood, setRequestGood] = React.useState(false);
 
-    // setShowLogin will show login on page (use on nav bar)
+    const handleMoviePost = (data) => {
+        const request = {
+            title: data.title,
+            image_url: data.imageUrl,
+            release_date: data.releaseDate,
+            age_rating: data.ageRating,
+        };
+        const result = Axios.post("http://127.0.0.1:5000/movie/add", request).then(
+            (response) => {
+                if (response.data.status) {
+                    setRequestGood(true);
+                }
+            }
+        ).catch((error) => {setRequestError(true);});
+    }
 
     // define values for form
     const [values, setValues] = React.useState({
@@ -35,7 +54,7 @@ const StaffPage = ({setShowLogin, navBarUsername}) => {
             placeholder: "Image URL",
             label: "Image URL",
             errorMessage: "Movie URL should be valid link",
-            pattern: "(https?://)[A-Za-z0-9./+_=?()[{-]*",
+            pattern: "(https?://)[A-Za-z0-9./+_=?()[{- ]*",
             required: true,
         },
         {
@@ -61,7 +80,7 @@ const StaffPage = ({setShowLogin, navBarUsername}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(Object.fromEntries(data.entries()));
+        handleMoviePost(Object.fromEntries(data.entries()));
     }
 
     // handle value change
@@ -85,6 +104,8 @@ const StaffPage = ({setShowLogin, navBarUsername}) => {
                         /> 
                     })}
                     <button className="movieSubmitButton">Submit</button>
+                    {requestError ? <OperationFailedComponent error={"Failed to post movie"} /> : null}
+                    {requestGood ? <OperationSuccessfulComponent message={"Movie successfully Created"} /> : null}
                 </form>
                 
                 <div className="moviePreview">

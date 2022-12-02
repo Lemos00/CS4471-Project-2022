@@ -39,7 +39,7 @@ const MainPage = (props) => {
                     releaseDate={movie.release_date} setDisplayModal={setDisplayModal}/>
                 }) : null}
 
-                {displayModal ? <Modal movieData={displayModal}/> : null}
+                {displayModal ? <Modal movieData={displayModal} setShow={setDisplayModal}/> : null}
             </div>      
         </div>
     )

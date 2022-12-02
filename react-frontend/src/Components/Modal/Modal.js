@@ -1,19 +1,23 @@
 import React from 'react'
 import "./Modal.css"
+import OperationSuccessfulComponent from '../OperationSuccessfulComponent/OperationSuccessfulComponent';
 
-const Modal = props => {
-    console.log(props);
+const Modal = (props) => {
+    const [success, setSuccess] = React.useState(false);
     if (!props) {
         return null;
-    }
+    } 
 
-    const handleClick = event => {
+    const handleClose = () => {
         props.setShow(false);
+    }
+    const handleClick = event => {
+        // props.setShow(false);
+        setSuccess(true);
         console.log(event);
       };
 
     const handleCost = event => {
-        console.log("yo");
         document.getElementById("lblName").innerHTML = "Total: $" + (document.getElementById("tickets").selectedIndex + 1)*8.5
     };
 
@@ -57,14 +61,15 @@ const Modal = props => {
 
                 </div>
                 <div className="modal-body4">
-                    <label id="lblName">Total: $0.00 </label> 
+                    <label id="lblName">Total: $8.50 </label> 
                 </div>
                 <div className="modal-footer">
                     <div className="btn">
                         <button id="pay" onClick={() => {handleClick(true);}} >Pay</button>
-                        <button id="close" onClick={() => {handleClick(true);}} >Close</button>
+                        <button id="close" onClick={() => {handleClose(true);}} >Close</button>
                     </div>
                 </div>
+                {success ? <OperationSuccessfulComponent message={"successfully Emailed your tickets"}/> : null}
             </div>
         </div>
         
