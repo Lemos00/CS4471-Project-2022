@@ -43,7 +43,7 @@ def add_movie():
     data = request.get_json()
 
     # add the movie to the database
-    result = db.add_movie(data['movie_id'], data['title'])
+    result = db.add_movie(data['title'], data['image_url'], data['release_date'], data['age_rating'])
 
     # If the movie already exists, return a 409
     if not result:
