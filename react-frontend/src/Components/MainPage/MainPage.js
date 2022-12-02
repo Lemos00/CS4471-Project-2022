@@ -8,8 +8,10 @@ import "./MainPage.css";
 const MainPage = (props) => {
     
     const [movieList, setMovieList] = React.useState([]);
+    const [showMoviesbutton, setShowMoviesButton] = React.useState(true);
 
     const handleList = () => {
+        setShowMoviesButton(false);
         const result = Axios.get("http://127.0.0.1:5000/movie/list").then(
             (response) => {
                 if (response.status < 400) {
@@ -25,16 +27,17 @@ const MainPage = (props) => {
     return(
         <div className="mainCover">
             <NavBar setShowLogin={props.setShowLogin} navBarUsername={props.navBarUsername}/>
-            <button onClick={handleList}>SEE LIST OF MOVIES</button>
+            {showMoviesbutton ?
+            <div className="buttonWrapper">
+                <button className="showMoviesButton" onClick={handleList}>SEE LIST OF MOVIES</button>
+            </div>
+            : null}
             <div className="movieGrid">
                 {movieList ? movieList.map((movie) => {
                     return <MovieCardComponent className="movieChild" key={movie.id} title={movie.title} imageUrl={movie.image_url}
                     releaseDate={movie.release_date}/>
                 }) : null}
-            </div>
-
-            {movieList ? <p>hello</p> : null}
-             
+            </div>      
         </div>
     )
 }
