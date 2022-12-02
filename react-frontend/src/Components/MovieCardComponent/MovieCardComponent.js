@@ -7,9 +7,12 @@ import "./MovieCardComponent.css";
 //     - body: body description of the movie
 const MovieCardComponent = (props) => {
 
-    const handleClick = event => {
-        props.setShow(true);
-        console.log(event);
+    const handleClick = (event) => {
+        props.setDisplayModal({
+            imageUrl: props.imageUrl,
+            title: props.title,
+            releaseDate: props.releaseDate
+        });
       };
 
     return (

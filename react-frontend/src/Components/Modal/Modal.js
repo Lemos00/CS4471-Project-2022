@@ -22,12 +22,12 @@ const Modal = props => {
         <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h4 className="modal-title">Morbius</h4>
-                    <img src="https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/morbius_onesheet_1400x2100_he.jpg?itok=-jQVkWIe" alt="" />
+                    <h1 className="modal-title">{props.movieData.title}</h1>
+                    <img src={props.movieData.imageUrl} alt="" />
                 </div>
                 <hr></hr>
                 <div className="modal-body">
-                Dangerously ill with a rare blood disorder and determined to save others suffering his same fate, Dr. Morbius attempts a desperate gamble. While at first it seems to be a radical success, a darkness inside him is unleashed. Will good override evil -- or will Morbius succumb to his mysterious new urges?
+                Release date: {props.movieData.releaseDate}
                 </div>
                 <hr></hr>
                 <div className="modal-body2">
