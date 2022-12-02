@@ -17,11 +17,13 @@ const Modal = props => {
         document.getElementById("lblName").innerHTML = "Total: $" + (document.getElementById("tickets").selectedIndex + 1)*8.5
     };
 
+    
     return (
         <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
                     <h4 className="modal-title">Morbius</h4>
+                    <img src="https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/morbius_onesheet_1400x2100_he.jpg?itok=-jQVkWIe" alt="" />
                 </div>
                 <hr></hr>
                 <div className="modal-body">
@@ -50,6 +52,11 @@ const Modal = props => {
                     </select>
                 </div>
                 <div className="modal-body3">
+                    <label>Please select food and beverages</label> 
+                    <hr></hr>
+
+                </div>
+                <div className="modal-body4">
                     <label id="lblName">Total: $0.00 </label> 
                 </div>
                 <div className="modal-footer">

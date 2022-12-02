@@ -68,3 +68,7 @@ hr {
     border-style: inset;
     border-width: 1px;
   }
+  img {
+    width: 100%;
+    height: 50%;
+ }
