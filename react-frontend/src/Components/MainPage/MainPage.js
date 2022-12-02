@@ -3,6 +3,7 @@ import Modal from '../Modal/Modal.js'
 import MovieCardComponent from '../MovieCardComponent/MovieCardComponent.js'
 import Axios from "axios";
 import NavBar from '../NavBar/NavBar.js';
+import "./MainPage.css";
 
 const MainPage = (props) => {
     
@@ -27,7 +28,7 @@ const MainPage = (props) => {
             <button onClick={handleList}>SEE LIST OF MOVIES</button>
             <div className="movieGrid">
                 {movieList ? movieList.map((movie) => {
-                    return <MovieCardComponent key={movie.id} title={movie.title} imageUrl={movie.image_url}
+                    return <MovieCardComponent className="movieChild" key={movie.id} title={movie.title} imageUrl={movie.image_url}
                     releaseDate={movie.release_date}/>
                 }) : null}
             </div>

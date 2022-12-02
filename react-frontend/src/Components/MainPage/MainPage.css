@@ -1,4 +1,13 @@
+
+
 .movieGrid {
-    display: grid;
-    grid-template-columns: repeat(100px);
-}
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .movieChild {
+    flex: 1 0 21%; /* explanation below */
+    height: 100px;
+    padding-left: 20px;
+    margin: 10px;
+  }
