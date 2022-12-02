@@ -1,0 +1,4 @@
+.movieGrid {
+    display: grid;
+    grid-template-columns: repeat(100px);
+}

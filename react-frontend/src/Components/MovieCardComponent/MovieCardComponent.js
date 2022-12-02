@@ -15,7 +15,7 @@ const MovieCardComponent = (props) => {
     return (
         <div className="cardContainer" key={props.key}>
             <div className="imageContainer">
-                <img src={props.imageUrl} alt="" />
+                <img src={props.imageUrl} alt="Image Unavailable" />
             </div>
             <div className="cardContent">
                 <div className="cardTitle">
