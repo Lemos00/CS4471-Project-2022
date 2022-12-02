@@ -14,7 +14,6 @@ const Modal = (props) => {
     const handleClick = event => {
         // props.setShow(false);
         setSuccess(true);
-        console.log(event);
       };
 
     const handleCost = event => {
@@ -56,7 +55,6 @@ const Modal = (props) => {
                     </select>
                 </div>
                 <div className="modal-body3">
-                    <label>Please select food and beverages</label> 
                     <hr></hr>
 
                 </div>
