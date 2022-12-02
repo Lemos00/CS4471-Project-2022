@@ -1,5 +1,6 @@
 import React from "react";
 import StaffPage from "../StaffPage/StaffPage";
+import MainPage from "../MainPage/MainPage";
 
 // MAIN COMPONENT, LOGIN PAGE MAIN
 const MainPages = ({setShowLogin, pageToShow}) => {
@@ -8,9 +9,8 @@ const MainPages = ({setShowLogin, pageToShow}) => {
         <div className="mainPageCover">
             
             {pageToShow[0] === "admin" ? <StaffPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/> 
-                : <StaffPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/>}
-        
-        </div>
+                : <MainPage setShowLogin={setShowLogin} navBarUsername={pageToShow[1]}/>}
+            </div>
      );
 }
  

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./MovieCardComponent.css";
 
 // Props to Pass:
@@ -6,10 +6,16 @@ import "./MovieCardComponent.css";
 //     - title: title of the Movie
 //     - body: body description of the movie
 const MovieCardComponent = (props) => {
+
+    const handleClick = event => {
+        props.setShow(true);
+        console.log(event);
+      };
+
     return (
-        <div className="cardContainer">
+        <div className="cardContainer" key={props.key}>
             <div className="imageContainer">
-                <img src={props.imageUrl} alt="" />
+                <img src={props.imageUrl} alt="Image Unavailable" />
             </div>
             <div className="cardContent">
                 <div className="cardTitle">
@@ -19,12 +25,13 @@ const MovieCardComponent = (props) => {
                     <p>{props.releaseDate}</p>
                 </div>
                 <div className="cardButton">
-                    <button>
+                    <button onClick= {() => {handleClick(true);}}>
                         See Sessions
                     </button>
                 </div>
             </div>
         </div>
+        
     )
 }
 

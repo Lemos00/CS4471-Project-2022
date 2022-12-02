@@ -1,0 +1,32 @@
+
+
+.movieGrid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+.movieChild {
+    flex: 1 0 21%; /* explanation below */
+    height: 100px;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.showMoviesButton {
+    width: 20%;
+    height: 3em;
+    background-color: rgb(61, 43, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+    color: white;
+    margin-top:300px;
+}
+
+.buttonWrapper {
+    display:flex;
+    justify-content: center;
+}
