@@ -8,26 +8,40 @@ import "./MainPage.css";
 const MainPage = (props) => {
     
     const [movieList, setMovieList] = React.useState([]);
+    const [originalMovieList, setOriginalMovieList] = React.useState([]);
     const [showMoviesbutton, setShowMoviesButton] = React.useState(true);
     const [displayModal, setDisplayModal] = React.useState(null);
+    const [searchQuery, setSearchQuery] = React.useState('');
 
     const handleList = () => {
         setShowMoviesButton(false);
         const result = Axios.get("http://127.0.0.1:5000/movie/list").then(
             (response) => {
                 if (response.status < 400) {
+                    setOriginalMovieList(response.data)
                     setMovieList(response.data);
                 }else {
                     setMovieList = [];
                 }
              }
         )
-        console.log(movieList);
     }
+    const handleSearchQuery = (query) => {
+        setSearchQuery(query);
+        if(query != ''){
+            const refinedMovieList = movieList.filter((movie) => {
+                return movie.title.toLowerCase().includes(query.toLowerCase());
+              });
+            setMovieList(refinedMovieList)           
+        }
+        else{
+            setMovieList(originalMovieList)
+        }
 
+    }
     return(
         <div className="mainCover">
-            <NavBar setShowLogin={props.setShowLogin} navBarUsername={props.navBarUsername}/>
+            <NavBar setShowLogin={props.setShowLogin} navBarUsername={props.navBarUsername} setSearchQuery={handleSearchQuery} />
             {showMoviesbutton ?
             <div className="buttonWrapper">
                 <button className="showMoviesButton" onClick={handleList}>SEE LIST OF MOVIES</button>
